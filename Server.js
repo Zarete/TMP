@@ -22,4 +22,4 @@ app.get("/subpart/proteins", (req, res) => {
             res.sendFile(__dirname + "/public/subpart/proteins/proteins.html");
 })
 
-app.listen(8080);
+app.listen(process.env.PORT || 8080);
