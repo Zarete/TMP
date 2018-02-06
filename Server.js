@@ -8,7 +8,7 @@ app.use(express.static(__dirname + '/public'));
 app.use(express.static(__dirname + '/public/css'));
 app.use(express.static(__dirname + '/public/js'));
 
-app.get("/acceuil", (req, res) => {
+app.get("/", (req, res) => {
     console.log("Welcome");
     res.sendFile(__dirname + "/public/index.html");
 })
