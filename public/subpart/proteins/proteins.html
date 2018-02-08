@@ -90,8 +90,32 @@
 
           <div class="col-md-offset-1 col-md-3">
             <div class="row">
-              <div class="col-md-1">
-                <input type="file" id="browse" class="input"></input>
+              <div class="col-md-4">
+                <form name="proteinList">
+                  <select class="btn" name="selection" size=1>
+                    <option>Browse for a new file...</option>
+                  </select>
+                </form>
+                <script>
+                  let xhr;
+                  if (window.XMLHttpRequest) {
+                    xhr = new XMLHttpRequest();
+                  } else if (window.ActiveXObject) {
+                    xhr = new ActiveXObject("Microsoft.XMLHTTP");
+                  }
+
+                  xhr.onreadystatechange = function () {
+                    let blobProteins = xhr.responseText;
+                    let blobProteinsArray = blobProteins.split(",");
+                    document.proteinList.selection.options.length = blobProteinsArray.length + 1;
+                    for (let i = 1; i < blobProteinsArray.length + 1; i++){
+                      document.proteinList.selection.options[i].value = blobProteinsArray[i-1];
+                      document.proteinList.selection.options[i].text = blobProteinsArray[i-1];
+                    }
+                  };
+                  xhr.open("GET", "/subpart/proteins/proteinList.txt"); //assuming kgr.bss is plaintext
+                  xhr.send();
+                </script>
               </div>
             </div>
             <div class="row">
@@ -99,6 +123,9 @@
                 <button id="load" class="btn">Load</button>
               </div>
             </div>
+
+            <input type="file" id="hiddenInput" />
+            <div id="hiddenFileName"></div>
 
             <div class="row">
               <div class="col-md-4">
@@ -131,36 +158,6 @@
                     <option>Select second protein...</option>
                   </select>
                 </form>
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="col-md-4">
-                <form name="proteinList">
-                  <select class="btn" id="mySelect1" name="selection" size=1>
-                    <option>Proteins List</option>
-                  </select>
-                </form>
-                <script>
-                  let xhr;
-                  if (window.XMLHttpRequest) {
-                    xhr = new XMLHttpRequest();
-                  } else if (window.ActiveXObject) {
-                    xhr = new ActiveXObject("Microsoft.XMLHTTP");
-                  }
-
-                  xhr.onreadystatechange = function () {
-                    let blobProteins = xhr.responseText;
-                    let blobProteinsArray = blobProteins.split(",");
-                    document.proteinList.selection.options.length = blobProteinsArray.length;
-                    for (let i = 0; i < blobProteinsArray.length; i++){
-                      document.proteinList.selection.options[i].value = blobProteinsArray[i];
-                      document.proteinList.selection.options[i].text = blobProteinsArray[i];
-                    }
-                  };
-                  xhr.open("GET", "../../test.txt"); //assuming kgr.bss is plaintext
-                  xhr.send();
-                </script>
               </div>
             </div>
 

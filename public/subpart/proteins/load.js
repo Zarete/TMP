@@ -1,3 +1,5 @@
+var fileFromServer;
+
 function initialLoad(){
     var xhttp = new XMLHttpRequest();
 }
@@ -10,26 +12,65 @@ function load(){
     // var att = document.createAttribute("class");       // Create a "class" attribute
     // att.value = "browse";                           // Set the value of the class attribute
     // loadButton.setAttributeNode(att);
-    var doc = document.getElementById("browse").files[0];
-    if (listeProts.length > 0){
-        if (confirm('Do you want to keep the previous loaded files?')) {
-            null;
+    var doc = document.forms["proteinList"].elements["selection"];
+    var pdb = doc[doc.selectedIndex].text;
+
+    if(pdb == "Browse for a new file..."){
+      var elem = document.getElementById("hiddenInput");
+      var evt = document.createEvent("MouseEvents");
+      evt.initEvent("click", true, false);
+      elem.dispatchEvent(evt);
+    }
+    else{
+      console.log("loading file from server...");
+      getFileFromServer("PDB/PDB_BLOB/"+pdb, function(text) {
+        if (text === null) {
+            console.log("an error occured");
         }
         else {
-            stage.removeAllComponents();
-            listeProts = [];
-            clearChoice("mySelect1");
-            clearChoice("mySelect2");
+          console.log("loading file...");
+          // pdb = fileFromServer.response;
+          console.log(pdb);
+          stage.loadFile("PDB/PDB_BLOB/"+pdb, {defaultRepresentation: true}).then( function( comp){
+              console.log("loading successful");
+              listeProts.push(comp);
+              // displayProteins();
+              addChoice("mySelect1");
+              addChoice("mySelect2");
+          });
+        }
+      });
+    }
+
+
+}
+
+function getFileFromServer(url, doneCallback) {
+
+    fileFromServer = new XMLHttpRequest();
+    fileFromServer.onreadystatechange = handleStateChange;
+    fileFromServer.open("GET", url, true);
+    fileFromServer.send();
+
+    function handleStateChange() {
+        if (fileFromServer.readyState === 4) {
+            doneCallback(fileFromServer.status == 200 ? fileFromServer.responseText : null);
         }
     }
-    stage.loadFile(doc, {defaultRepresentation: true}).then( function( comp){
+}
+
+function loadFromUser(){
+    var elem = document.getElementById("hiddenInput");
+    pdb = elem.files[0];
+    console.log(elem.files);
+    console.log(pdb);
+    stage.loadFile(pdb, {defaultRepresentation: true}).then( function( comp){
         console.log("loading successful");
         listeProts.push(comp);
         // displayProteins();
         addChoice("mySelect1");
         addChoice("mySelect2");
     });
-
 }
 
 function addChoice(selectName){
@@ -136,3 +177,19 @@ document.getElementById("cartoon").addEventListener("click", function(){
     changeRepresentation("cartoon");
 });
 //document.getElementById("dock").addEventListener("click", dock);
+
+/*resets the value to address navigating away from the page
+and choosing to upload the same file */
+$('#hiddenInput').on('click touchstart' , function(){
+    $(this).val('');
+});
+
+
+//Trigger now when you have selected any file
+$("#hiddenInput").change(function(e) {
+  loadFromUser();
+});
+
+// $("#hiddenFileName").change(function(e){
+//   loadFromServer();
+// });
