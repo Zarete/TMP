@@ -52,19 +52,19 @@
             <a href="#page-top"></a>
           </li>
           <li>
-            <a class="page-scroll" href="/">Home</a>
+            <a class="page-scroll" href="../../index.html">Home</a>
           </li>
           <li>
-            <a class="page-scroll" href="/subpart/life_cycle">Life Cycle</a>
+            <a class="page-scroll" href="../life_cycle/life_cycle.html">Life Cycle</a>
           </li>
           <li>
-            <a class="page-scroll" href="/subpart/annotation">Genomic</a>
+            <a class="page-scroll" href="../annotation/annotation.html">Genomic</a>
           </li>
           <li>
-            <a class="page-scroll" href="/subpart/metabolism">Metabolomic</a>
+            <a class="page-scroll" href="../metabolism/metabolism.html">Metabolomic</a>
           </li>
           <li>
-            <a class="page-scroll" href="/subpart/movement">Movement</a>
+            <a class="page-scroll" href="../movement/movement.html">Movement</a>
           </li>
         </ul>
       </div>
@@ -108,12 +108,12 @@
                     let blobProteins = xhr.responseText;
                     let blobProteinsArray = blobProteins.split(",");
                     document.proteinList.selection.options.length = blobProteinsArray.length + 1;
-                    for (let i = 1; i < blobProteinsArray.length + 1; i++){
-                      document.proteinList.selection.options[i].value = blobProteinsArray[i-1];
-                      document.proteinList.selection.options[i].text = blobProteinsArray[i-1];
+                    for (let i = 1; i < blobProteinsArray.length + 1; i++) {
+                      document.proteinList.selection.options[i].value = blobProteinsArray[i - 1];
+                      document.proteinList.selection.options[i].text = blobProteinsArray[i - 1];
                     }
                   };
-                  xhr.open("GET", "/subpart/proteins/proteinList.txt"); //assuming kgr.bss is plaintext
+                  xhr.open("GET", "test.txt"); //assuming kgr.bss is plaintext
                   xhr.send();
                 </script>
               </div>
@@ -124,8 +124,7 @@
               </div>
             </div>
 
-            <input type="file" id="hiddenInput" />
-            <div id="hiddenFileName"></div>
+            <!-- <input type="file" id="hiddenInput" /> -->
 
             <div class="row">
               <div class="col-md-4">
@@ -161,31 +160,74 @@
               </div>
             </div>
 
+            <div class="row">
+              <div class="col-md-12" style="border-top:2px solid rgba(255, 255, 255, 0.404);">
+                <!-- BOUTON SPIN -->
+                <div class="row">
+                  <button id="spin" class="btn">Spin</button>
+                </div>
+              </div>
 
-          </div>
-        </div>
 
-        <div class="row">
-
-          <div class="row">
-            <div class="col-md-9">
-              <p style="font-size:22px; font-weight:bold">Change Visualization</p>
             </div>
           </div>
 
           <div class="row">
-            <div class="col-md-9 col-md-offset-1">
 
-              <div class="col-md-3">
-                <button id="backbone" class="btn">Backbone</button>
-              </div>
-              <div class="col-md-3">
-                <button id="ballStick" class="btn">Ball and Stick</button>
-              </div>
-              <div class="col-md-3">
-                <button id="cartoon" class="btn">Cartoon</button>
+            <div class="row">
+              <div class="col-md-9">
+                <p style="font-size:22px; font-weight:bold">Change Visualization</p>
               </div>
             </div>
+
+            <!-- modif START -->
+            <div class="row">
+              <div class="col-md-9 col-md-offset-1">
+
+                <div class="col-md-2">
+                  <button id="backbone" class="btn">Backbone</button>
+                </div>
+                <div class="col-md-2">
+                  <button id="ballStick" class="btn">Ball and Stick</button>
+                </div>
+                <div class="col-md-2">
+                  <button id="cartoon" class="btn">Cartoon</button>
+                </div>
+
+                <div class="col-md-2">
+                  <button id="surface" class="btn">Surface</button>
+                </div>
+
+              </div>
+
+
+            </div>
+
+            <!-- COLOR ROW -->
+            <div class="row">
+              <div class="col-md-9 col-md-offset-1">
+
+                <div class="col-md-3">
+                  <button id="hydrophobicity" class="btn">Color by hydrophobicity</button>
+                </div>
+                <div class="col-md-3">
+                  <button id="chainid" class="btn">Color by chain ID</button>
+                </div>
+                <div class="col-md-3">
+                  <button id="atomindex" class="btn">Color by atom index</button>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-9 col-md-offset-1">
+                  <div class="col-md-9">
+                    <button id="electrostatic" class="btn">Color a surface by electrostatic charge</button>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
 
           </div>
 

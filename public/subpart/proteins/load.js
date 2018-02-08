@@ -1,17 +1,24 @@
 var fileFromServer;
 
+let current_representation = 'cartoon';
+let current_scheme = 'chainid';
+let spin_flag = false;
+
 function initialLoad(){
     var xhttp = new XMLHttpRequest();
 }
 
-function load(){
-    // var x = document.createElement("INPUT");
-    // x.setAttribute("type", "file");
-    // document.getElementById("buttons").appendChild(x);
-    // var loadButton = document.getElementsByID("load");   // Get the first <h1> element in the document
-    // var att = document.createAttribute("class");       // Create a "class" attribute
-    // att.value = "browse";                           // Set the value of the class attribute
-    // loadButton.setAttributeNode(att);
+function loadPDB(file){
+  stage.loadFile(file, {defaultRepresentation: true}).then( function( comp){
+      console.log("loading successful");
+      listeProts.push(comp);
+      changeRepresentation(current_representation, current_scheme);
+      addChoice("mySelect1");
+      addChoice("mySelect2");
+  });
+}
+
+function getFile(){
     var doc = document.forms["proteinList"].elements["selection"];
     var pdb = doc[doc.selectedIndex].text;
 
@@ -23,21 +30,14 @@ function load(){
     }
     else{
       console.log("loading file from server...");
-      getFileFromServer("PDB/PDB_BLOB/"+pdb, function(text) {
-        if (text === null) {
+      getFileFromServer("PDB/PDB_BLOB/"+pdb, function(file) {
+        if (file === null) {
             console.log("an error occured");
         }
         else {
-          console.log("loading file...");
-          // pdb = fileFromServer.response;
-          console.log(pdb);
-          stage.loadFile("PDB/PDB_BLOB/"+pdb, {defaultRepresentation: true}).then( function( comp){
-              console.log("loading successful");
-              listeProts.push(comp);
-              // displayProteins();
-              addChoice("mySelect1");
-              addChoice("mySelect2");
-          });
+          file.lastModifiedDate = new Date();
+          file.name = pdb;
+          loadPDB(file);
         }
       });
     }
@@ -49,28 +49,19 @@ function getFileFromServer(url, doneCallback) {
 
     fileFromServer = new XMLHttpRequest();
     fileFromServer.onreadystatechange = handleStateChange;
+    console.log(url);
     fileFromServer.open("GET", url, true);
+    fileFromServer.responseType = 'blob';
     fileFromServer.send();
 
     function handleStateChange() {
+      console.log(fileFromServer.readyState);
         if (fileFromServer.readyState === 4) {
-            doneCallback(fileFromServer.status == 200 ? fileFromServer.responseText : null);
+          console.log(fileFromServer.status);
+          console.log(fileFromServer.response);
+            doneCallback(fileFromServer.status == 200 ? fileFromServer.response : null);
         }
     }
-}
-
-function loadFromUser(){
-    var elem = document.getElementById("hiddenInput");
-    pdb = elem.files[0];
-    console.log(elem.files);
-    console.log(pdb);
-    stage.loadFile(pdb, {defaultRepresentation: true}).then( function( comp){
-        console.log("loading successful");
-        listeProts.push(comp);
-        // displayProteins();
-        addChoice("mySelect1");
-        addChoice("mySelect2");
-    });
 }
 
 function addChoice(selectName){
@@ -88,22 +79,34 @@ function clearChoice(selectName){
     }
 }
 
-// function displayProteins(){
-//     var names = "";
-//     console.log(listeProts);
-//     for (i=0;i<listeProts.length;i++) {
-//         console.log(listeProts[i].name);
-//         names += listeProts[i].name + "<br />";
-//     }
-//     document.getElementById("proteins").innerHTML = names;
-// }
-
-function changeRepresentation(representation){
+function changeRepresentation(representation, current_scheme){
     stage.eachComponent(function( o ){
+        console.log(current_scheme);
         o.removeAllRepresentations();
-        o.addRepresentation( representation );
-        o.autoView();
+        o.addRepresentation( representation, {
+                                              sele: "polymer",
+                                              colorScheme: current_scheme,
+                                              colorDomain: [ -0.3, 0.3 ],
+                                              surfaceType: "av"
+                                            });
+        current_representation = representation;
     });
+}
+
+function changeColor(scheme, current_representation){
+    stage.eachComponent(function( o ){
+        console.log(current_scheme);
+        o.removeAllRepresentations();
+        console.log(current_representation);
+        o.addRepresentation( current_representation, {
+                                              sele: "polymer",
+                                              colorScheme: scheme,
+                                              colorDomain: [ -0.3, 0.3 ],
+                                              surfaceType: "av"
+                                            });
+        current_scheme = scheme;
+    });
+
 }
 
 function clear(){
@@ -165,18 +168,49 @@ function dock(){
 }
 
 
-document.getElementById("load").addEventListener("click", load);
+document.getElementById("load").addEventListener("click", getFile);
 document.getElementById("clear").addEventListener("click", clear);
+//REPRESENTATION
 document.getElementById("backbone").addEventListener("click", function(){
-    changeRepresentation("backbone");
+    changeRepresentation("backbone", current_scheme);
+    // current_representation = "backbone";
 });
 document.getElementById("ballStick").addEventListener("click", function(){
-    changeRepresentation("ball+stick");
+    changeRepresentation("ball+stick", current_scheme);
+    // current_representation = "ball+stick";
 });
 document.getElementById("cartoon").addEventListener("click", function(){
-    changeRepresentation("cartoon");
+    changeRepresentation("cartoon", current_scheme);
+    // current_representation = "cartoon";
 });
-//document.getElementById("dock").addEventListener("click", dock);
+
+document.getElementById("surface").addEventListener("click", function(){
+    changeRepresentation("surface", current_scheme);
+    // current_representation = "cartoon";
+});
+
+
+// COLOR
+document.getElementById("hydrophobicity").addEventListener("click", function(){
+    changeColor("hydrophobicity",  current_representation);
+  });
+document.getElementById("chainid").addEventListener("click", function(){
+    changeColor("chainid",  current_representation);
+  });
+document.getElementById("atomindex").addEventListener("click", function(){
+    changeColor("atomindex",  current_representation);
+  });
+
+document.getElementById("electrostatic").addEventListener("click", function(){
+    let tmp_scheme = current_scheme;
+    changeColor("electrostatic",  "surface");
+    current_scheme = tmp_scheme
+  });
+
+document.getElementById("spin").addEventListener("click", function(){
+  spin_flag = spin_flag === true ? false : true;
+  stage.setSpin(spin_flag);
+  });
 
 /*resets the value to address navigating away from the page
 and choosing to upload the same file */
@@ -187,9 +221,7 @@ $('#hiddenInput').on('click touchstart' , function(){
 
 //Trigger now when you have selected any file
 $("#hiddenInput").change(function(e) {
-  loadFromUser();
+  var elem = document.getElementById("hiddenInput");
+  pdb = elem.files[0];
+  loadPDB(pdb);
 });
-
-// $("#hiddenFileName").change(function(e){
-//   loadFromServer();
-// });
