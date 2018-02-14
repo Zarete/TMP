@@ -1,15 +1,8 @@
 # Metabolic viewer - SBML/JSON
 
 ## TO DO:
-* Create a clean SBML file for Physarum
 
 * input function: To convert a SBML file to JSON to be visualized.
-
-* Add a button for directly visualizing JSON File.
-    
-* Add a way to visualize different files on the same window?.
-
-* js script to expand-collapse the network depending on the pathway? (changing the json?).
 
 * updating sbml2json to parse all kind of SBML files (managing errors and stuff).
 
@@ -71,20 +64,4 @@ Need to be tested on other SBML files from Biomodels and others to manage the er
 
 Inspired by https://github.com/funasoul/visualizeSBML
 
-and CytoscapeWeb
-
 Using Cytoscapejs
-
-And cytoscapejs extensions:
-
-- cytoscape-expand-collapse
-
-https://github.com/iVis-at-Bilkent/cytoscape.js-expand-collapse#api
-
-*U. Dogrusoz and B. Genc, "A Multi-Graph Approach to Complexity Management in Interactive Graph Visualization", Computers & Graphics, 30(1), pp. 86-97, 2006.*
-
-- cytoscape-cose-bilkent
-
-https://github.com/cytoscape/cytoscape.js-cose-bilkent
-
-*U. Dogrusoz, E. Giral, A. Cetintas, A. Civril, and E. Demir, "A Layout Algorithm For Undirected Compound Graphs", Information Sciences, 179, pp. 980-994, 2009.*

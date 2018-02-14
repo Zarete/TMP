@@ -1,7 +1,7 @@
 # This Makefile is for the JBrowse extension to perl.
 #
 # It was generated automatically by MakeMaker version
-# 7.24 (Revision: 72400) from the contents of
+# 7.1002 (Revision: 71002) from the contents of
 # Makefile.PL. Don't edit this file, edit Makefile.PL instead.
 #
 #       ANY CHANGES MADE HERE WILL BE LOST!
@@ -30,7 +30,7 @@
 
 # --- MakeMaker const_config section:
 
-# These definitions are from config.sh (via /usr/lib/x86_64-linux-gnu/perl/5.26/Config.pm).
+# These definitions are from config.sh (via /usr/lib/x86_64-linux-gnu/perl/5.24/Config.pm).
 # They may have been overridden via Makefile.PL or on the command line.
 AR = ar
 CC = x86_64-linux-gnu-gcc
@@ -43,16 +43,16 @@ FULL_AR = /usr/bin/ar
 LD = x86_64-linux-gnu-gcc
 LDDLFLAGS = -shared -L/usr/local/lib -fstack-protector-strong
 LDFLAGS =  -fstack-protector-strong -L/usr/local/lib
-LIBC = libc-2.26.so
+LIBC = libc-2.24.so
 LIB_EXT = .a
 OBJ_EXT = .o
 OSNAME = linux
-OSVERS = 4.9.0
+OSVERS = 3.16.0
 RANLIB = :
-SITELIBEXP = /usr/local/share/perl/5.26.0
-SITEARCHEXP = /usr/local/lib/x86_64-linux-gnu/perl/5.26.0
+SITELIBEXP = /usr/local/share/perl/5.24.1
+SITEARCHEXP = /usr/local/lib/x86_64-linux-gnu/perl/5.24.1
 SO = so
-VENDORARCHEXP = /usr/lib/x86_64-linux-gnu/perl5/5.26
+VENDORARCHEXP = /usr/lib/x86_64-linux-gnu/perl5/5.24
 VENDORLIBEXP = /usr/share/perl5
 
 
@@ -78,7 +78,7 @@ INST_MAN3DIR = blib/man3
 MAN1EXT = 1p
 MAN3EXT = 3pm
 INSTALLDIRS = site
-INSTALL_BASE = /home/thomas/Bureau/JBrowse-1.12.1/extlib
+INSTALL_BASE = /var/www/html/extlib
 DESTDIR = 
 PREFIX = $(INSTALL_BASE)
 INSTALLPRIVLIB = $(INSTALL_BASE)/lib/perl5
@@ -117,16 +117,16 @@ INSTALLSITEMAN3DIR = $(INSTALL_BASE)/man/man3
 DESTINSTALLSITEMAN3DIR = $(DESTDIR)$(INSTALLSITEMAN3DIR)
 INSTALLVENDORMAN3DIR = $(INSTALL_BASE)/man/man3
 DESTINSTALLVENDORMAN3DIR = $(DESTDIR)$(INSTALLVENDORMAN3DIR)
-PERL_LIB = /usr/share/perl/5.26
-PERL_ARCHLIB = /usr/lib/x86_64-linux-gnu/perl/5.26
-PERL_ARCHLIBDEP = /usr/lib/x86_64-linux-gnu/perl/5.26
+PERL_LIB = /usr/share/perl/5.24
+PERL_ARCHLIB = /usr/lib/x86_64-linux-gnu/perl/5.24
+PERL_ARCHLIBDEP = /usr/lib/x86_64-linux-gnu/perl/5.24
 LIBPERL_A = libperl.a
 FIRST_MAKEFILE = Makefile
 MAKEFILE_OLD = Makefile.old
 MAKE_APERL_FILE = Makefile.aperl
 PERLMAINCC = $(CC)
-PERL_INC = /usr/lib/x86_64-linux-gnu/perl/5.26/CORE
-PERL_INCDEP = /usr/lib/x86_64-linux-gnu/perl/5.26/CORE
+PERL_INC = /usr/lib/x86_64-linux-gnu/perl/5.24/CORE
+PERL_INCDEP = /usr/lib/x86_64-linux-gnu/perl/5.24/CORE
 PERL = "/usr/bin/perl"
 FULLPERL = "/usr/bin/perl"
 ABSPERL = $(PERL)
@@ -141,9 +141,9 @@ PERM_DIR = 755
 PERM_RW = 644
 PERM_RWX = 755
 
-MAKEMAKER   = /usr/share/perl/5.26/ExtUtils/MakeMaker.pm
-MM_VERSION  = 7.24
-MM_REVISION = 72400
+MAKEMAKER   = /usr/share/perl/5.24/ExtUtils/MakeMaker.pm
+MM_VERSION  = 7.1002
+MM_REVISION = 71002
 
 # FULLEXT = Pathname for extension directory (eg Foo/Bar/Oracle).
 # BASEEXT = Basename part of FULLEXT. May be just equal FULLEXT. (eg Oracle)
@@ -268,9 +268,80 @@ TO_INST_PM = src/perl5/ArrayRepr.pm \
 	src/perl5/TiledImage/MemoryPrimStorage.pm \
 	src/perl5/TrackImage.pm
 
+PM_TO_BLIB = src/perl5/ArrayRepr.pm \
+	$(INST_LIB)/ArrayRepr.pm \
+	src/perl5/Bio/FeatureIO/bed.pm \
+	$(INST_LIB)/Bio/FeatureIO/bed.pm \
+	src/perl5/Bio/JBrowse/Cmd.pm \
+	$(INST_LIB)/Bio/JBrowse/Cmd.pm \
+	src/perl5/Bio/JBrowse/Cmd/BioDBToJson.pm \
+	$(INST_LIB)/Bio/JBrowse/Cmd/BioDBToJson.pm \
+	src/perl5/Bio/JBrowse/Cmd/FlatFileToJson.pm \
+	$(INST_LIB)/Bio/JBrowse/Cmd/FlatFileToJson.pm \
+	src/perl5/Bio/JBrowse/Cmd/FormatSequences.pm \
+	$(INST_LIB)/Bio/JBrowse/Cmd/FormatSequences.pm \
+	src/perl5/Bio/JBrowse/Cmd/IndexNames.pm \
+	$(INST_LIB)/Bio/JBrowse/Cmd/IndexNames.pm \
+	src/perl5/Bio/JBrowse/Cmd/NCFormatter.pm \
+	$(INST_LIB)/Bio/JBrowse/Cmd/NCFormatter.pm \
+	src/perl5/Bio/JBrowse/Cmd/RemoveTrack.pm \
+	$(INST_LIB)/Bio/JBrowse/Cmd/RemoveTrack.pm \
+	src/perl5/Bio/JBrowse/ConfigurationFile.pm \
+	$(INST_LIB)/Bio/JBrowse/ConfigurationFile.pm \
+	src/perl5/Bio/JBrowse/ExternalSorter.pm \
+	$(INST_LIB)/Bio/JBrowse/ExternalSorter.pm \
+	src/perl5/Bio/JBrowse/FeatureStream.pm \
+	$(INST_LIB)/Bio/JBrowse/FeatureStream.pm \
+	src/perl5/Bio/JBrowse/FeatureStream/BioPerl.pm \
+	$(INST_LIB)/Bio/JBrowse/FeatureStream/BioPerl.pm \
+	src/perl5/Bio/JBrowse/FeatureStream/GFF3_LowLevel.pm \
+	$(INST_LIB)/Bio/JBrowse/FeatureStream/GFF3_LowLevel.pm \
+	src/perl5/Bio/JBrowse/FeatureStream/Genbank.pm \
+	$(INST_LIB)/Bio/JBrowse/FeatureStream/Genbank.pm \
+	src/perl5/Bio/JBrowse/FeatureStream/Genbank/LocationParser.pm \
+	$(INST_LIB)/Bio/JBrowse/FeatureStream/Genbank/LocationParser.pm \
+	src/perl5/Bio/JBrowse/FeatureStream/Genbank/Parser.pm \
+	$(INST_LIB)/Bio/JBrowse/FeatureStream/Genbank/Parser.pm \
+	src/perl5/Bio/JBrowse/HashStore.pm \
+	$(INST_LIB)/Bio/JBrowse/HashStore.pm \
+	src/perl5/Bio/JBrowse/JSON.pm \
+	$(INST_LIB)/Bio/JBrowse/JSON.pm \
+	src/perl5/FeatureTrack.pm \
+	$(INST_LIB)/FeatureTrack.pm \
+	src/perl5/GenomeDB.pm \
+	$(INST_LIB)/GenomeDB.pm \
+	src/perl5/ImageTrack.pm \
+	$(INST_LIB)/ImageTrack.pm \
+	src/perl5/ImageTrackRenderer.pm \
+	$(INST_LIB)/ImageTrackRenderer.pm \
+	src/perl5/IntervalStore.pm \
+	$(INST_LIB)/IntervalStore.pm \
+	src/perl5/JBlibs.pm \
+	$(INST_LIB)/JBlibs.pm \
+	src/perl5/JsonFileStorage.pm \
+	$(INST_LIB)/JsonFileStorage.pm \
+	src/perl5/LazyNCList.pm \
+	$(INST_LIB)/LazyNCList.pm \
+	src/perl5/LazyPatricia.pm \
+	$(INST_LIB)/LazyPatricia.pm \
+	src/perl5/NCLSorter.pm \
+	$(INST_LIB)/NCLSorter.pm \
+	src/perl5/NCList.pm \
+	$(INST_LIB)/NCList.pm \
+	src/perl5/NameHandler.pm \
+	$(INST_LIB)/NameHandler.pm \
+	src/perl5/TiledImage.pm \
+	$(INST_LIB)/TiledImage.pm \
+	src/perl5/TiledImage/DBPrimStorage.pm \
+	$(INST_LIB)/TiledImage/DBPrimStorage.pm \
+	src/perl5/TiledImage/MemoryPrimStorage.pm \
+	$(INST_LIB)/TiledImage/MemoryPrimStorage.pm \
+	src/perl5/TrackImage.pm \
+	$(INST_LIB)/TrackImage.pm
+
 
 # --- MakeMaker platform_constants section:
-MM_Unix_VERSION = 7.24
+MM_Unix_VERSION = 7.1002
 PERL_MALLOC_DEF = -DPERL_EXTMALLOC_DEF -Dmalloc=Perl_malloc -Dfree=Perl_mfree -Drealloc=Perl_realloc -Dcalloc=Perl_calloc
 
 
@@ -363,15 +434,13 @@ PASTHRU = LIBPERL_A="$(LIBPERL_A)"\
 	LINKTYPE="$(LINKTYPE)"\
 	LD="$(LD)"\
 	PREFIX="$(PREFIX)"\
-	INSTALL_BASE="$(INSTALL_BASE)"\
-	PASTHRU_DEFINE='$(DEFINE) $(PASTHRU_DEFINE)'\
-	PASTHRU_INC='$(INC) $(PASTHRU_INC)'
+	INSTALL_BASE="$(INSTALL_BASE)"
 
 
 # --- MakeMaker special_targets section:
 .SUFFIXES : .xs .c .C .cpp .i .s .cxx .cc $(OBJ_EXT)
 
-.PHONY: all config static dynamic test linkext manifest blibdirs clean realclean disttest distdir pure_all subdirs clean_subdirs makemakerdflt manifypods realclean_subdirs subdirs_dynamic subdirs_pure_nolink subdirs_static subdirs-test_dynamic subdirs-test_static test_dynamic test_static
+.PHONY: all config static dynamic test linkext manifest blibdirs clean realclean disttest distdir
 
 
 
@@ -388,9 +457,8 @@ PASTHRU = LIBPERL_A="$(LIBPERL_A)"\
 all :: pure_all manifypods
 	$(NOECHO) $(NOOP)
 
-pure_all :: config pm_to_blib subdirs linkext
-	$(NOECHO) $(NOOP)
 
+pure_all :: config pm_to_blib subdirs linkext
 	$(NOECHO) $(NOOP)
 
 subdirs :: $(MYEXTLIB)
@@ -455,7 +523,7 @@ $(INST_MAN3DIR)$(DFSEP).exists :: Makefile.PL
 
 # --- MakeMaker linkext section:
 
-linkext :: dynamic
+linkext :: $(LINKTYPE)
 	$(NOECHO) $(NOOP)
 
 
@@ -469,7 +537,7 @@ BOOTSTRAP =
 
 # --- MakeMaker dynamic section:
 
-dynamic :: $(FIRST_MAKEFILE) config $(INST_BOOT) $(INST_DYNAMIC)
+dynamic :: $(FIRST_MAKEFILE) $(BOOTSTRAP) $(INST_DYNAMIC)
 	$(NOECHO) $(NOOP)
 
 
@@ -493,7 +561,7 @@ POD2MAN_EXE = $(PERLRUN) "-MExtUtils::Command::MM" -e pod2man "--"
 POD2MAN = $(POD2MAN_EXE)
 
 
-manifypods : pure_all config  \
+manifypods : pure_all  \
 	bin/add-bam-track.pl \
 	bin/add-bw-track.pl \
 	bin/add-json.pl \
@@ -595,57 +663,39 @@ manifypods : pure_all config  \
 
 # --- MakeMaker installbin section:
 
-EXE_FILES = bin/add-bam-track.pl bin/add-bw-track.pl bin/add-json.pl bin/add-track-json.pl bin/bam-to-json.pl bin/biodb-to-json.pl bin/draw-basepair-track.pl bin/flatfile-to-json.pl bin/generate-names.pl bin/json2conf.pl bin/maker2jbrowse bin/new-plugin.pl bin/prepare-refseqs.pl bin/remove-track.pl bin/ucsc-to-json.pl bin/wig-to-json.pl
+EXE_FILES = bin/ucsc-to-json.pl bin/remove-track.pl bin/generate-names.pl bin/maker2jbrowse bin/prepare-refseqs.pl bin/wig-to-json.pl bin/biodb-to-json.pl bin/draw-basepair-track.pl bin/flatfile-to-json.pl bin/new-plugin.pl bin/add-bw-track.pl bin/add-bam-track.pl bin/add-json.pl bin/add-track-json.pl bin/bam-to-json.pl bin/json2conf.pl
 
-pure_all :: $(INST_SCRIPT)/add-bam-track.pl $(INST_SCRIPT)/add-bw-track.pl $(INST_SCRIPT)/add-json.pl $(INST_SCRIPT)/add-track-json.pl $(INST_SCRIPT)/bam-to-json.pl $(INST_SCRIPT)/biodb-to-json.pl $(INST_SCRIPT)/draw-basepair-track.pl $(INST_SCRIPT)/flatfile-to-json.pl $(INST_SCRIPT)/generate-names.pl $(INST_SCRIPT)/json2conf.pl $(INST_SCRIPT)/maker2jbrowse $(INST_SCRIPT)/new-plugin.pl $(INST_SCRIPT)/prepare-refseqs.pl $(INST_SCRIPT)/remove-track.pl $(INST_SCRIPT)/ucsc-to-json.pl $(INST_SCRIPT)/wig-to-json.pl
+pure_all :: $(INST_SCRIPT)/ucsc-to-json.pl $(INST_SCRIPT)/biodb-to-json.pl $(INST_SCRIPT)/wig-to-json.pl $(INST_SCRIPT)/draw-basepair-track.pl $(INST_SCRIPT)/flatfile-to-json.pl $(INST_SCRIPT)/maker2jbrowse $(INST_SCRIPT)/add-json.pl $(INST_SCRIPT)/add-track-json.pl $(INST_SCRIPT)/add-bw-track.pl $(INST_SCRIPT)/json2conf.pl $(INST_SCRIPT)/remove-track.pl $(INST_SCRIPT)/generate-names.pl $(INST_SCRIPT)/new-plugin.pl $(INST_SCRIPT)/add-bam-track.pl $(INST_SCRIPT)/prepare-refseqs.pl $(INST_SCRIPT)/bam-to-json.pl
 	$(NOECHO) $(NOOP)
 
 realclean ::
 	$(RM_F) \
-	  $(INST_SCRIPT)/add-bam-track.pl $(INST_SCRIPT)/add-bw-track.pl \
+	  $(INST_SCRIPT)/ucsc-to-json.pl $(INST_SCRIPT)/biodb-to-json.pl \
+	  $(INST_SCRIPT)/wig-to-json.pl $(INST_SCRIPT)/draw-basepair-track.pl \
+	  $(INST_SCRIPT)/flatfile-to-json.pl $(INST_SCRIPT)/maker2jbrowse \
 	  $(INST_SCRIPT)/add-json.pl $(INST_SCRIPT)/add-track-json.pl \
-	  $(INST_SCRIPT)/bam-to-json.pl $(INST_SCRIPT)/biodb-to-json.pl \
-	  $(INST_SCRIPT)/draw-basepair-track.pl $(INST_SCRIPT)/flatfile-to-json.pl \
-	  $(INST_SCRIPT)/generate-names.pl $(INST_SCRIPT)/json2conf.pl \
-	  $(INST_SCRIPT)/maker2jbrowse $(INST_SCRIPT)/new-plugin.pl \
-	  $(INST_SCRIPT)/prepare-refseqs.pl $(INST_SCRIPT)/remove-track.pl \
-	  $(INST_SCRIPT)/ucsc-to-json.pl $(INST_SCRIPT)/wig-to-json.pl 
+	  $(INST_SCRIPT)/add-bw-track.pl $(INST_SCRIPT)/json2conf.pl \
+	  $(INST_SCRIPT)/remove-track.pl $(INST_SCRIPT)/generate-names.pl \
+	  $(INST_SCRIPT)/new-plugin.pl $(INST_SCRIPT)/add-bam-track.pl \
+	  $(INST_SCRIPT)/prepare-refseqs.pl $(INST_SCRIPT)/bam-to-json.pl 
 
-$(INST_SCRIPT)/add-bam-track.pl : bin/add-bam-track.pl $(FIRST_MAKEFILE) $(INST_SCRIPT)$(DFSEP).exists $(INST_BIN)$(DFSEP).exists
-	$(NOECHO) $(RM_F) $(INST_SCRIPT)/add-bam-track.pl
-	$(CP) bin/add-bam-track.pl $(INST_SCRIPT)/add-bam-track.pl
-	$(FIXIN) $(INST_SCRIPT)/add-bam-track.pl
-	-$(NOECHO) $(CHMOD) $(PERM_RWX) $(INST_SCRIPT)/add-bam-track.pl
-
-$(INST_SCRIPT)/add-bw-track.pl : bin/add-bw-track.pl $(FIRST_MAKEFILE) $(INST_SCRIPT)$(DFSEP).exists $(INST_BIN)$(DFSEP).exists
-	$(NOECHO) $(RM_F) $(INST_SCRIPT)/add-bw-track.pl
-	$(CP) bin/add-bw-track.pl $(INST_SCRIPT)/add-bw-track.pl
-	$(FIXIN) $(INST_SCRIPT)/add-bw-track.pl
-	-$(NOECHO) $(CHMOD) $(PERM_RWX) $(INST_SCRIPT)/add-bw-track.pl
-
-$(INST_SCRIPT)/add-json.pl : bin/add-json.pl $(FIRST_MAKEFILE) $(INST_SCRIPT)$(DFSEP).exists $(INST_BIN)$(DFSEP).exists
-	$(NOECHO) $(RM_F) $(INST_SCRIPT)/add-json.pl
-	$(CP) bin/add-json.pl $(INST_SCRIPT)/add-json.pl
-	$(FIXIN) $(INST_SCRIPT)/add-json.pl
-	-$(NOECHO) $(CHMOD) $(PERM_RWX) $(INST_SCRIPT)/add-json.pl
-
-$(INST_SCRIPT)/add-track-json.pl : bin/add-track-json.pl $(FIRST_MAKEFILE) $(INST_SCRIPT)$(DFSEP).exists $(INST_BIN)$(DFSEP).exists
-	$(NOECHO) $(RM_F) $(INST_SCRIPT)/add-track-json.pl
-	$(CP) bin/add-track-json.pl $(INST_SCRIPT)/add-track-json.pl
-	$(FIXIN) $(INST_SCRIPT)/add-track-json.pl
-	-$(NOECHO) $(CHMOD) $(PERM_RWX) $(INST_SCRIPT)/add-track-json.pl
-
-$(INST_SCRIPT)/bam-to-json.pl : bin/bam-to-json.pl $(FIRST_MAKEFILE) $(INST_SCRIPT)$(DFSEP).exists $(INST_BIN)$(DFSEP).exists
-	$(NOECHO) $(RM_F) $(INST_SCRIPT)/bam-to-json.pl
-	$(CP) bin/bam-to-json.pl $(INST_SCRIPT)/bam-to-json.pl
-	$(FIXIN) $(INST_SCRIPT)/bam-to-json.pl
-	-$(NOECHO) $(CHMOD) $(PERM_RWX) $(INST_SCRIPT)/bam-to-json.pl
+$(INST_SCRIPT)/ucsc-to-json.pl : bin/ucsc-to-json.pl $(FIRST_MAKEFILE) $(INST_SCRIPT)$(DFSEP).exists $(INST_BIN)$(DFSEP).exists
+	$(NOECHO) $(RM_F) $(INST_SCRIPT)/ucsc-to-json.pl
+	$(CP) bin/ucsc-to-json.pl $(INST_SCRIPT)/ucsc-to-json.pl
+	$(FIXIN) $(INST_SCRIPT)/ucsc-to-json.pl
+	-$(NOECHO) $(CHMOD) $(PERM_RWX) $(INST_SCRIPT)/ucsc-to-json.pl
 
 $(INST_SCRIPT)/biodb-to-json.pl : bin/biodb-to-json.pl $(FIRST_MAKEFILE) $(INST_SCRIPT)$(DFSEP).exists $(INST_BIN)$(DFSEP).exists
 	$(NOECHO) $(RM_F) $(INST_SCRIPT)/biodb-to-json.pl
 	$(CP) bin/biodb-to-json.pl $(INST_SCRIPT)/biodb-to-json.pl
 	$(FIXIN) $(INST_SCRIPT)/biodb-to-json.pl
 	-$(NOECHO) $(CHMOD) $(PERM_RWX) $(INST_SCRIPT)/biodb-to-json.pl
+
+$(INST_SCRIPT)/wig-to-json.pl : bin/wig-to-json.pl $(FIRST_MAKEFILE) $(INST_SCRIPT)$(DFSEP).exists $(INST_BIN)$(DFSEP).exists
+	$(NOECHO) $(RM_F) $(INST_SCRIPT)/wig-to-json.pl
+	$(CP) bin/wig-to-json.pl $(INST_SCRIPT)/wig-to-json.pl
+	$(FIXIN) $(INST_SCRIPT)/wig-to-json.pl
+	-$(NOECHO) $(CHMOD) $(PERM_RWX) $(INST_SCRIPT)/wig-to-json.pl
 
 $(INST_SCRIPT)/draw-basepair-track.pl : bin/draw-basepair-track.pl $(FIRST_MAKEFILE) $(INST_SCRIPT)$(DFSEP).exists $(INST_BIN)$(DFSEP).exists
 	$(NOECHO) $(RM_F) $(INST_SCRIPT)/draw-basepair-track.pl
@@ -659,11 +709,29 @@ $(INST_SCRIPT)/flatfile-to-json.pl : bin/flatfile-to-json.pl $(FIRST_MAKEFILE) $
 	$(FIXIN) $(INST_SCRIPT)/flatfile-to-json.pl
 	-$(NOECHO) $(CHMOD) $(PERM_RWX) $(INST_SCRIPT)/flatfile-to-json.pl
 
-$(INST_SCRIPT)/generate-names.pl : bin/generate-names.pl $(FIRST_MAKEFILE) $(INST_SCRIPT)$(DFSEP).exists $(INST_BIN)$(DFSEP).exists
-	$(NOECHO) $(RM_F) $(INST_SCRIPT)/generate-names.pl
-	$(CP) bin/generate-names.pl $(INST_SCRIPT)/generate-names.pl
-	$(FIXIN) $(INST_SCRIPT)/generate-names.pl
-	-$(NOECHO) $(CHMOD) $(PERM_RWX) $(INST_SCRIPT)/generate-names.pl
+$(INST_SCRIPT)/maker2jbrowse : bin/maker2jbrowse $(FIRST_MAKEFILE) $(INST_SCRIPT)$(DFSEP).exists $(INST_BIN)$(DFSEP).exists
+	$(NOECHO) $(RM_F) $(INST_SCRIPT)/maker2jbrowse
+	$(CP) bin/maker2jbrowse $(INST_SCRIPT)/maker2jbrowse
+	$(FIXIN) $(INST_SCRIPT)/maker2jbrowse
+	-$(NOECHO) $(CHMOD) $(PERM_RWX) $(INST_SCRIPT)/maker2jbrowse
+
+$(INST_SCRIPT)/add-json.pl : bin/add-json.pl $(FIRST_MAKEFILE) $(INST_SCRIPT)$(DFSEP).exists $(INST_BIN)$(DFSEP).exists
+	$(NOECHO) $(RM_F) $(INST_SCRIPT)/add-json.pl
+	$(CP) bin/add-json.pl $(INST_SCRIPT)/add-json.pl
+	$(FIXIN) $(INST_SCRIPT)/add-json.pl
+	-$(NOECHO) $(CHMOD) $(PERM_RWX) $(INST_SCRIPT)/add-json.pl
+
+$(INST_SCRIPT)/add-track-json.pl : bin/add-track-json.pl $(FIRST_MAKEFILE) $(INST_SCRIPT)$(DFSEP).exists $(INST_BIN)$(DFSEP).exists
+	$(NOECHO) $(RM_F) $(INST_SCRIPT)/add-track-json.pl
+	$(CP) bin/add-track-json.pl $(INST_SCRIPT)/add-track-json.pl
+	$(FIXIN) $(INST_SCRIPT)/add-track-json.pl
+	-$(NOECHO) $(CHMOD) $(PERM_RWX) $(INST_SCRIPT)/add-track-json.pl
+
+$(INST_SCRIPT)/add-bw-track.pl : bin/add-bw-track.pl $(FIRST_MAKEFILE) $(INST_SCRIPT)$(DFSEP).exists $(INST_BIN)$(DFSEP).exists
+	$(NOECHO) $(RM_F) $(INST_SCRIPT)/add-bw-track.pl
+	$(CP) bin/add-bw-track.pl $(INST_SCRIPT)/add-bw-track.pl
+	$(FIXIN) $(INST_SCRIPT)/add-bw-track.pl
+	-$(NOECHO) $(CHMOD) $(PERM_RWX) $(INST_SCRIPT)/add-bw-track.pl
 
 $(INST_SCRIPT)/json2conf.pl : bin/json2conf.pl $(FIRST_MAKEFILE) $(INST_SCRIPT)$(DFSEP).exists $(INST_BIN)$(DFSEP).exists
 	$(NOECHO) $(RM_F) $(INST_SCRIPT)/json2conf.pl
@@ -671,11 +739,17 @@ $(INST_SCRIPT)/json2conf.pl : bin/json2conf.pl $(FIRST_MAKEFILE) $(INST_SCRIPT)$
 	$(FIXIN) $(INST_SCRIPT)/json2conf.pl
 	-$(NOECHO) $(CHMOD) $(PERM_RWX) $(INST_SCRIPT)/json2conf.pl
 
-$(INST_SCRIPT)/maker2jbrowse : bin/maker2jbrowse $(FIRST_MAKEFILE) $(INST_SCRIPT)$(DFSEP).exists $(INST_BIN)$(DFSEP).exists
-	$(NOECHO) $(RM_F) $(INST_SCRIPT)/maker2jbrowse
-	$(CP) bin/maker2jbrowse $(INST_SCRIPT)/maker2jbrowse
-	$(FIXIN) $(INST_SCRIPT)/maker2jbrowse
-	-$(NOECHO) $(CHMOD) $(PERM_RWX) $(INST_SCRIPT)/maker2jbrowse
+$(INST_SCRIPT)/remove-track.pl : bin/remove-track.pl $(FIRST_MAKEFILE) $(INST_SCRIPT)$(DFSEP).exists $(INST_BIN)$(DFSEP).exists
+	$(NOECHO) $(RM_F) $(INST_SCRIPT)/remove-track.pl
+	$(CP) bin/remove-track.pl $(INST_SCRIPT)/remove-track.pl
+	$(FIXIN) $(INST_SCRIPT)/remove-track.pl
+	-$(NOECHO) $(CHMOD) $(PERM_RWX) $(INST_SCRIPT)/remove-track.pl
+
+$(INST_SCRIPT)/generate-names.pl : bin/generate-names.pl $(FIRST_MAKEFILE) $(INST_SCRIPT)$(DFSEP).exists $(INST_BIN)$(DFSEP).exists
+	$(NOECHO) $(RM_F) $(INST_SCRIPT)/generate-names.pl
+	$(CP) bin/generate-names.pl $(INST_SCRIPT)/generate-names.pl
+	$(FIXIN) $(INST_SCRIPT)/generate-names.pl
+	-$(NOECHO) $(CHMOD) $(PERM_RWX) $(INST_SCRIPT)/generate-names.pl
 
 $(INST_SCRIPT)/new-plugin.pl : bin/new-plugin.pl $(FIRST_MAKEFILE) $(INST_SCRIPT)$(DFSEP).exists $(INST_BIN)$(DFSEP).exists
 	$(NOECHO) $(RM_F) $(INST_SCRIPT)/new-plugin.pl
@@ -683,29 +757,23 @@ $(INST_SCRIPT)/new-plugin.pl : bin/new-plugin.pl $(FIRST_MAKEFILE) $(INST_SCRIPT
 	$(FIXIN) $(INST_SCRIPT)/new-plugin.pl
 	-$(NOECHO) $(CHMOD) $(PERM_RWX) $(INST_SCRIPT)/new-plugin.pl
 
+$(INST_SCRIPT)/add-bam-track.pl : bin/add-bam-track.pl $(FIRST_MAKEFILE) $(INST_SCRIPT)$(DFSEP).exists $(INST_BIN)$(DFSEP).exists
+	$(NOECHO) $(RM_F) $(INST_SCRIPT)/add-bam-track.pl
+	$(CP) bin/add-bam-track.pl $(INST_SCRIPT)/add-bam-track.pl
+	$(FIXIN) $(INST_SCRIPT)/add-bam-track.pl
+	-$(NOECHO) $(CHMOD) $(PERM_RWX) $(INST_SCRIPT)/add-bam-track.pl
+
 $(INST_SCRIPT)/prepare-refseqs.pl : bin/prepare-refseqs.pl $(FIRST_MAKEFILE) $(INST_SCRIPT)$(DFSEP).exists $(INST_BIN)$(DFSEP).exists
 	$(NOECHO) $(RM_F) $(INST_SCRIPT)/prepare-refseqs.pl
 	$(CP) bin/prepare-refseqs.pl $(INST_SCRIPT)/prepare-refseqs.pl
 	$(FIXIN) $(INST_SCRIPT)/prepare-refseqs.pl
 	-$(NOECHO) $(CHMOD) $(PERM_RWX) $(INST_SCRIPT)/prepare-refseqs.pl
 
-$(INST_SCRIPT)/remove-track.pl : bin/remove-track.pl $(FIRST_MAKEFILE) $(INST_SCRIPT)$(DFSEP).exists $(INST_BIN)$(DFSEP).exists
-	$(NOECHO) $(RM_F) $(INST_SCRIPT)/remove-track.pl
-	$(CP) bin/remove-track.pl $(INST_SCRIPT)/remove-track.pl
-	$(FIXIN) $(INST_SCRIPT)/remove-track.pl
-	-$(NOECHO) $(CHMOD) $(PERM_RWX) $(INST_SCRIPT)/remove-track.pl
-
-$(INST_SCRIPT)/ucsc-to-json.pl : bin/ucsc-to-json.pl $(FIRST_MAKEFILE) $(INST_SCRIPT)$(DFSEP).exists $(INST_BIN)$(DFSEP).exists
-	$(NOECHO) $(RM_F) $(INST_SCRIPT)/ucsc-to-json.pl
-	$(CP) bin/ucsc-to-json.pl $(INST_SCRIPT)/ucsc-to-json.pl
-	$(FIXIN) $(INST_SCRIPT)/ucsc-to-json.pl
-	-$(NOECHO) $(CHMOD) $(PERM_RWX) $(INST_SCRIPT)/ucsc-to-json.pl
-
-$(INST_SCRIPT)/wig-to-json.pl : bin/wig-to-json.pl $(FIRST_MAKEFILE) $(INST_SCRIPT)$(DFSEP).exists $(INST_BIN)$(DFSEP).exists
-	$(NOECHO) $(RM_F) $(INST_SCRIPT)/wig-to-json.pl
-	$(CP) bin/wig-to-json.pl $(INST_SCRIPT)/wig-to-json.pl
-	$(FIXIN) $(INST_SCRIPT)/wig-to-json.pl
-	-$(NOECHO) $(CHMOD) $(PERM_RWX) $(INST_SCRIPT)/wig-to-json.pl
+$(INST_SCRIPT)/bam-to-json.pl : bin/bam-to-json.pl $(FIRST_MAKEFILE) $(INST_SCRIPT)$(DFSEP).exists $(INST_BIN)$(DFSEP).exists
+	$(NOECHO) $(RM_F) $(INST_SCRIPT)/bam-to-json.pl
+	$(CP) bin/bam-to-json.pl $(INST_SCRIPT)/bam-to-json.pl
+	$(FIXIN) $(INST_SCRIPT)/bam-to-json.pl
+	-$(NOECHO) $(CHMOD) $(PERM_RWX) $(INST_SCRIPT)/bam-to-json.pl
 
 
 
@@ -748,16 +816,15 @@ clean :: clean_subdirs
 
 
 # --- MakeMaker realclean_subdirs section:
-# so clean is forced to complete before realclean_subdirs runs
-realclean_subdirs : clean
+realclean_subdirs :
 	$(NOECHO) $(NOOP)
 
 
 # --- MakeMaker realclean section:
 # Delete temporary files (via clean) and also delete dist files
-realclean purge :: realclean_subdirs
+realclean purge ::  clean realclean_subdirs
 	- $(RM_F) \
-	  $(FIRST_MAKEFILE) $(MAKEFILE_OLD) 
+	  $(MAKEFILE_OLD) $(FIRST_MAKEFILE) 
 	- $(RM_RF) \
 	  $(DISTVNAME) 
 
@@ -777,7 +844,7 @@ metafile : create_distdir
 	$(NOECHO) $(ECHO) 'configure_requires:' >> META_new.yml
 	$(NOECHO) $(ECHO) '  ExtUtils::MakeMaker: '\''6.30'\''' >> META_new.yml
 	$(NOECHO) $(ECHO) 'dynamic_config: 1' >> META_new.yml
-	$(NOECHO) $(ECHO) 'generated_by: '\''ExtUtils::MakeMaker version 7.24, CPAN::Meta::Converter version 2.150010'\''' >> META_new.yml
+	$(NOECHO) $(ECHO) 'generated_by: '\''ExtUtils::MakeMaker version 7.1002, CPAN::Meta::Converter version 2.150005'\''' >> META_new.yml
 	$(NOECHO) $(ECHO) 'license: perl' >> META_new.yml
 	$(NOECHO) $(ECHO) 'meta-spec:' >> META_new.yml
 	$(NOECHO) $(ECHO) '  url: http://module-build.sourceforge.net/META-spec-v1.4.html' >> META_new.yml
@@ -846,7 +913,7 @@ metafile : create_distdir
 	$(NOECHO) $(ECHO) '      "Eric Yao, Colin Diesh, & other contributors"' >> META_new.json
 	$(NOECHO) $(ECHO) '   ],' >> META_new.json
 	$(NOECHO) $(ECHO) '   "dynamic_config" : 1,' >> META_new.json
-	$(NOECHO) $(ECHO) '   "generated_by" : "ExtUtils::MakeMaker version 7.24, CPAN::Meta::Converter version 2.150010",' >> META_new.json
+	$(NOECHO) $(ECHO) '   "generated_by" : "ExtUtils::MakeMaker version 7.1002, CPAN::Meta::Converter version 2.150005",' >> META_new.json
 	$(NOECHO) $(ECHO) '   "license" : [' >> META_new.json
 	$(NOECHO) $(ECHO) '      "perl_5"' >> META_new.json
 	$(NOECHO) $(ECHO) '   ],' >> META_new.json
@@ -930,7 +997,7 @@ metafile : create_distdir
 	$(NOECHO) $(ECHO) '   },' >> META_new.json
 	$(NOECHO) $(ECHO) '   "release_status" : "stable",' >> META_new.json
 	$(NOECHO) $(ECHO) '   "version" : "",' >> META_new.json
-	$(NOECHO) $(ECHO) '   "x_serialization_backend" : "JSON::PP version 2.27400_02"' >> META_new.json
+	$(NOECHO) $(ECHO) '   "x_serialization_backend" : "JSON::PP version 2.27300_01"' >> META_new.json
 	$(NOECHO) $(ECHO) '}' >> META_new.json
 	-$(NOECHO) $(MV) META_new.json $(DISTVNAME)/META.json
 
@@ -1030,17 +1097,17 @@ ci :
 distmeta : create_distdir metafile
 	$(NOECHO) cd $(DISTVNAME) && $(ABSPERLRUN) -MExtUtils::Manifest=maniadd -e 'exit unless -e q{META.yml};' \
 	  -e 'eval { maniadd({q{META.yml} => q{Module YAML meta-data (added by MakeMaker)}}) }' \
-	  -e '    or die "Could not add META.yml to MANIFEST: $${'\''@'\''}"' --
+	  -e '    or print "Could not add META.yml to MANIFEST: $$$${'\''@'\''}\n"' --
 	$(NOECHO) cd $(DISTVNAME) && $(ABSPERLRUN) -MExtUtils::Manifest=maniadd -e 'exit unless -f q{META.json};' \
 	  -e 'eval { maniadd({q{META.json} => q{Module JSON meta-data (added by MakeMaker)}}) }' \
-	  -e '    or die "Could not add META.json to MANIFEST: $${'\''@'\''}"' --
+	  -e '    or print "Could not add META.json to MANIFEST: $$$${'\''@'\''}\n"' --
 
 
 
 # --- MakeMaker distsignature section:
 distsignature : distmeta
 	$(NOECHO) cd $(DISTVNAME) && $(ABSPERLRUN) -MExtUtils::Manifest=maniadd -e 'eval { maniadd({q{SIGNATURE} => q{Public-key signature (added by MakeMaker)}}) }' \
-	  -e '    or die "Could not add SIGNATURE to MANIFEST: $${'\''@'\''}"' --
+	  -e '    or print "Could not add SIGNATURE to MANIFEST: $$$${'\''@'\''}\n"' --
 	$(NOECHO) cd $(DISTVNAME) && $(TOUCH) SIGNATURE
 	cd $(DISTVNAME) && cpansign -s
 
@@ -1114,7 +1181,7 @@ doc_site_install :: all
 	-$(NOECHO) umask 02; $(MKPATH) "$(DESTINSTALLSITEARCH)"
 	-$(NOECHO) umask 02; $(DOC_INSTALL) \
 		"Module" "$(NAME)" \
-		"installed into" "$(INSTALLSITELIB)" \
+		"installed into" $(INSTALLSITELIB) \
 		LINKTYPE "$(LINKTYPE)" \
 		VERSION "$(VERSION)" \
 		EXE_FILES "$(EXE_FILES)" \
@@ -1164,12 +1231,11 @@ $(FIRST_MAKEFILE) : Makefile.PL $(CONFIGDEP)
 # --- MakeMaker makeaperl section ---
 MAP_TARGET    = perl
 FULLPERL      = "/usr/bin/perl"
-MAP_PERLINC   = "-Iblib/arch" "-Iblib/lib" "-I/usr/lib/x86_64-linux-gnu/perl/5.26" "-I/usr/share/perl/5.26"
 
-$(MAP_TARGET) :: $(MAKE_APERL_FILE)
+$(MAP_TARGET) :: static $(MAKE_APERL_FILE)
 	$(MAKE) $(USEMAKEFILE) $(MAKE_APERL_FILE) $@
 
-$(MAKE_APERL_FILE) : static $(FIRST_MAKEFILE) pm_to_blib
+$(MAKE_APERL_FILE) : $(FIRST_MAKEFILE) pm_to_blib
 	$(NOECHO) $(ECHO) Writing \"$(MAKE_APERL_FILE)\" for this $(MAP_TARGET)
 	$(NOECHO) $(PERLRUNINST) \
 		Makefile.PL DIR="" \
@@ -1178,6 +1244,7 @@ $(MAKE_APERL_FILE) : static $(FIRST_MAKEFILE) pm_to_blib
 
 
 # --- MakeMaker test section:
+
 TEST_VERBOSE=0
 TEST_TYPE=test_$(LINKTYPE)
 TEST_FILE = test.pl
@@ -1185,150 +1252,129 @@ TEST_FILES = t/*.t
 TESTDB_SW = -d
 
 testdb :: testdb_$(LINKTYPE)
+
+test :: $(TEST_TYPE) subdirs-test
+
+subdirs-test ::
 	$(NOECHO) $(NOOP)
 
-test :: $(TEST_TYPE)
-	$(NOECHO) $(NOOP)
 
-# Occasionally we may face this degenerate target:
+test_dynamic :: pure_all
+	PERL_DL_NONLAZY=1 PERL_USE_UNSAFE_INC=1 $(FULLPERLRUN) "-MExtUtils::Command::MM" "-MTest::Harness" "-e" "undef *Test::Harness::Switches; test_harness($(TEST_VERBOSE), '$(INST_LIB)', '$(INST_ARCHLIB)')" $(TEST_FILES)
+
+testdb_dynamic :: pure_all
+	PERL_DL_NONLAZY=1 PERL_USE_UNSAFE_INC=1 $(FULLPERLRUN) $(TESTDB_SW) "-I$(INST_LIB)" "-I$(INST_ARCHLIB)" $(TEST_FILE)
+
 test_ : test_dynamic
-	$(NOECHO) $(NOOP)
 
-subdirs-test_dynamic :: dynamic pure_all
-
-test_dynamic :: subdirs-test_dynamic
-	PERL_DL_NONLAZY=1 $(FULLPERLRUN) "-MExtUtils::Command::MM" "-MTest::Harness" "-e" "undef *Test::Harness::Switches; test_harness($(TEST_VERBOSE), '$(INST_LIB)', '$(INST_ARCHLIB)')" $(TEST_FILES)
-
-testdb_dynamic :: dynamic pure_all
-	PERL_DL_NONLAZY=1 $(FULLPERLRUN) $(TESTDB_SW) "-I$(INST_LIB)" "-I$(INST_ARCHLIB)" $(TEST_FILE)
-
-subdirs-test_static :: static pure_all
-
-test_static :: subdirs-test_static
-	PERL_DL_NONLAZY=1 $(FULLPERLRUN) "-MExtUtils::Command::MM" "-MTest::Harness" "-e" "undef *Test::Harness::Switches; test_harness($(TEST_VERBOSE), '$(INST_LIB)', '$(INST_ARCHLIB)')" $(TEST_FILES)
-
-testdb_static :: static pure_all
-	PERL_DL_NONLAZY=1 $(FULLPERLRUN) $(TESTDB_SW) "-I$(INST_LIB)" "-I$(INST_ARCHLIB)" $(TEST_FILE)
-
+test_static :: test_dynamic
+testdb_static :: testdb_dynamic
 
 
 # --- MakeMaker ppd section:
 # Creates a PPD (Perl Package Description) for a binary distribution.
 ppd :
-	$(NOECHO) $(ECHO) '<SOFTPKG NAME="JBrowse" VERSION="dev">' > JBrowse.ppd
-	$(NOECHO) $(ECHO) '    <ABSTRACT>A modern web-based genome browser.</ABSTRACT>' >> JBrowse.ppd
-	$(NOECHO) $(ECHO) '    <AUTHOR>Eric Yao, Colin Diesh, & other contributors</AUTHOR>' >> JBrowse.ppd
-	$(NOECHO) $(ECHO) '    <IMPLEMENTATION>' >> JBrowse.ppd
-	$(NOECHO) $(ECHO) '        <REQUIRE NAME="Bio::Annotation::SimpleValue" />' >> JBrowse.ppd
-	$(NOECHO) $(ECHO) '        <REQUIRE NAME="Bio::FeatureIO" />' >> JBrowse.ppd
-	$(NOECHO) $(ECHO) '        <REQUIRE NAME="Bio::GFF3::LowLevel::Parser" VERSION="1.8" />' >> JBrowse.ppd
-	$(NOECHO) $(ECHO) '        <REQUIRE NAME="Bio::Index::Fasta" />' >> JBrowse.ppd
-	$(NOECHO) $(ECHO) '        <REQUIRE NAME="Bio::OntologyIO" />' >> JBrowse.ppd
-	$(NOECHO) $(ECHO) '        <REQUIRE NAME="Bio::Root::Version" VERSION="1.006000" />' >> JBrowse.ppd
-	$(NOECHO) $(ECHO) '        <REQUIRE NAME="Bio::SeqFeature::Annotated" />' >> JBrowse.ppd
-	$(NOECHO) $(ECHO) '        <REQUIRE NAME="Bio::SeqFeature::Lite" />' >> JBrowse.ppd
-	$(NOECHO) $(ECHO) '        <REQUIRE NAME="Carp::" />' >> JBrowse.ppd
-	$(NOECHO) $(ECHO) '        <REQUIRE NAME="Cwd::" />' >> JBrowse.ppd
-	$(NOECHO) $(ECHO) '        <REQUIRE NAME="DBI::" />' >> JBrowse.ppd
-	$(NOECHO) $(ECHO) '        <REQUIRE NAME="DB_File::" />' >> JBrowse.ppd
-	$(NOECHO) $(ECHO) '        <REQUIRE NAME="Data::Dumper" />' >> JBrowse.ppd
-	$(NOECHO) $(ECHO) '        <REQUIRE NAME="Devel::Size" />' >> JBrowse.ppd
-	$(NOECHO) $(ECHO) '        <REQUIRE NAME="Digest::Crc32" />' >> JBrowse.ppd
-	$(NOECHO) $(ECHO) '        <REQUIRE NAME="Exporter::" />' >> JBrowse.ppd
-	$(NOECHO) $(ECHO) '        <REQUIRE NAME="Fcntl::" />' >> JBrowse.ppd
-	$(NOECHO) $(ECHO) '        <REQUIRE NAME="File::Basename" />' >> JBrowse.ppd
-	$(NOECHO) $(ECHO) '        <REQUIRE NAME="File::Copy::Recursive" />' >> JBrowse.ppd
-	$(NOECHO) $(ECHO) '        <REQUIRE NAME="File::Next" />' >> JBrowse.ppd
-	$(NOECHO) $(ECHO) '        <REQUIRE NAME="File::Path" VERSION="2" />' >> JBrowse.ppd
-	$(NOECHO) $(ECHO) '        <REQUIRE NAME="File::Spec" />' >> JBrowse.ppd
-	$(NOECHO) $(ECHO) '        <REQUIRE NAME="File::Spec::Functions" />' >> JBrowse.ppd
-	$(NOECHO) $(ECHO) '        <REQUIRE NAME="File::Temp" />' >> JBrowse.ppd
-	$(NOECHO) $(ECHO) '        <REQUIRE NAME="FindBin::" />' >> JBrowse.ppd
-	$(NOECHO) $(ECHO) '        <REQUIRE NAME="Getopt::Long" />' >> JBrowse.ppd
-	$(NOECHO) $(ECHO) '        <REQUIRE NAME="Hash::Merge" />' >> JBrowse.ppd
-	$(NOECHO) $(ECHO) '        <REQUIRE NAME="Heap::Simple" />' >> JBrowse.ppd
-	$(NOECHO) $(ECHO) '        <REQUIRE NAME="Heap::Simple::XS" />' >> JBrowse.ppd
-	$(NOECHO) $(ECHO) '        <REQUIRE NAME="IO::File" />' >> JBrowse.ppd
-	$(NOECHO) $(ECHO) '        <REQUIRE NAME="IO::Uncompress::Gunzip" />' >> JBrowse.ppd
-	$(NOECHO) $(ECHO) '        <REQUIRE NAME="JSON::" VERSION="2" />' >> JBrowse.ppd
-	$(NOECHO) $(ECHO) '        <REQUIRE NAME="JSON::XS" />' >> JBrowse.ppd
-	$(NOECHO) $(ECHO) '        <REQUIRE NAME="List::MoreUtils" VERSION="0.28" />' >> JBrowse.ppd
-	$(NOECHO) $(ECHO) '        <REQUIRE NAME="List::Util" />' >> JBrowse.ppd
-	$(NOECHO) $(ECHO) '        <REQUIRE NAME="POSIX::" />' >> JBrowse.ppd
-	$(NOECHO) $(ECHO) '        <REQUIRE NAME="Parse::RecDescent" />' >> JBrowse.ppd
-	$(NOECHO) $(ECHO) '        <REQUIRE NAME="PerlIO::gzip" />' >> JBrowse.ppd
-	$(NOECHO) $(ECHO) '        <REQUIRE NAME="Pod::Usage" />' >> JBrowse.ppd
-	$(NOECHO) $(ECHO) '        <REQUIRE NAME="Scalar::Util" />' >> JBrowse.ppd
-	$(NOECHO) $(ECHO) '        <REQUIRE NAME="Storable::" />' >> JBrowse.ppd
-	$(NOECHO) $(ECHO) '        <REQUIRE NAME="URI::Escape" />' >> JBrowse.ppd
-	$(NOECHO) $(ECHO) '        <REQUIRE NAME="base::" />' >> JBrowse.ppd
-	$(NOECHO) $(ECHO) '        <REQUIRE NAME="constant::" />' >> JBrowse.ppd
-	$(NOECHO) $(ECHO) '        <REQUIRE NAME="local::lib" />' >> JBrowse.ppd
-	$(NOECHO) $(ECHO) '        <REQUIRE NAME="strict::" />' >> JBrowse.ppd
-	$(NOECHO) $(ECHO) '        <REQUIRE NAME="vars::" />' >> JBrowse.ppd
-	$(NOECHO) $(ECHO) '        <REQUIRE NAME="warnings::" />' >> JBrowse.ppd
-	$(NOECHO) $(ECHO) '        <ARCHITECTURE NAME="x86_64-linux-gnu-thread-multi-5.26" />' >> JBrowse.ppd
-	$(NOECHO) $(ECHO) '        <CODEBASE HREF="" />' >> JBrowse.ppd
-	$(NOECHO) $(ECHO) '    </IMPLEMENTATION>' >> JBrowse.ppd
-	$(NOECHO) $(ECHO) '</SOFTPKG>' >> JBrowse.ppd
+	$(NOECHO) $(ECHO) '<SOFTPKG NAME="$(DISTNAME)" VERSION="$(VERSION)">' > $(DISTNAME).ppd
+	$(NOECHO) $(ECHO) '    <ABSTRACT>A modern web-based genome browser.</ABSTRACT>' >> $(DISTNAME).ppd
+	$(NOECHO) $(ECHO) '    <AUTHOR>Eric Yao, Colin Diesh, & other contributors</AUTHOR>' >> $(DISTNAME).ppd
+	$(NOECHO) $(ECHO) '    <IMPLEMENTATION>' >> $(DISTNAME).ppd
+	$(NOECHO) $(ECHO) '        <REQUIRE NAME="Bio::Annotation::SimpleValue" />' >> $(DISTNAME).ppd
+	$(NOECHO) $(ECHO) '        <REQUIRE NAME="Bio::FeatureIO" />' >> $(DISTNAME).ppd
+	$(NOECHO) $(ECHO) '        <REQUIRE NAME="Bio::GFF3::LowLevel::Parser" VERSION="1.8" />' >> $(DISTNAME).ppd
+	$(NOECHO) $(ECHO) '        <REQUIRE NAME="Bio::Index::Fasta" />' >> $(DISTNAME).ppd
+	$(NOECHO) $(ECHO) '        <REQUIRE NAME="Bio::OntologyIO" />' >> $(DISTNAME).ppd
+	$(NOECHO) $(ECHO) '        <REQUIRE NAME="Bio::Root::Version" VERSION="1.006000" />' >> $(DISTNAME).ppd
+	$(NOECHO) $(ECHO) '        <REQUIRE NAME="Bio::SeqFeature::Annotated" />' >> $(DISTNAME).ppd
+	$(NOECHO) $(ECHO) '        <REQUIRE NAME="Bio::SeqFeature::Lite" />' >> $(DISTNAME).ppd
+	$(NOECHO) $(ECHO) '        <REQUIRE NAME="Carp::" />' >> $(DISTNAME).ppd
+	$(NOECHO) $(ECHO) '        <REQUIRE NAME="Cwd::" />' >> $(DISTNAME).ppd
+	$(NOECHO) $(ECHO) '        <REQUIRE NAME="DBI::" />' >> $(DISTNAME).ppd
+	$(NOECHO) $(ECHO) '        <REQUIRE NAME="DB_File::" />' >> $(DISTNAME).ppd
+	$(NOECHO) $(ECHO) '        <REQUIRE NAME="Data::Dumper" />' >> $(DISTNAME).ppd
+	$(NOECHO) $(ECHO) '        <REQUIRE NAME="Devel::Size" />' >> $(DISTNAME).ppd
+	$(NOECHO) $(ECHO) '        <REQUIRE NAME="Digest::Crc32" />' >> $(DISTNAME).ppd
+	$(NOECHO) $(ECHO) '        <REQUIRE NAME="Exporter::" />' >> $(DISTNAME).ppd
+	$(NOECHO) $(ECHO) '        <REQUIRE NAME="Fcntl::" />' >> $(DISTNAME).ppd
+	$(NOECHO) $(ECHO) '        <REQUIRE NAME="File::Basename" />' >> $(DISTNAME).ppd
+	$(NOECHO) $(ECHO) '        <REQUIRE NAME="File::Copy::Recursive" />' >> $(DISTNAME).ppd
+	$(NOECHO) $(ECHO) '        <REQUIRE NAME="File::Next" />' >> $(DISTNAME).ppd
+	$(NOECHO) $(ECHO) '        <REQUIRE NAME="File::Path" VERSION="2" />' >> $(DISTNAME).ppd
+	$(NOECHO) $(ECHO) '        <REQUIRE NAME="File::Spec" />' >> $(DISTNAME).ppd
+	$(NOECHO) $(ECHO) '        <REQUIRE NAME="File::Spec::Functions" />' >> $(DISTNAME).ppd
+	$(NOECHO) $(ECHO) '        <REQUIRE NAME="File::Temp" />' >> $(DISTNAME).ppd
+	$(NOECHO) $(ECHO) '        <REQUIRE NAME="FindBin::" />' >> $(DISTNAME).ppd
+	$(NOECHO) $(ECHO) '        <REQUIRE NAME="Getopt::Long" />' >> $(DISTNAME).ppd
+	$(NOECHO) $(ECHO) '        <REQUIRE NAME="Hash::Merge" />' >> $(DISTNAME).ppd
+	$(NOECHO) $(ECHO) '        <REQUIRE NAME="Heap::Simple" />' >> $(DISTNAME).ppd
+	$(NOECHO) $(ECHO) '        <REQUIRE NAME="Heap::Simple::XS" />' >> $(DISTNAME).ppd
+	$(NOECHO) $(ECHO) '        <REQUIRE NAME="IO::File" />' >> $(DISTNAME).ppd
+	$(NOECHO) $(ECHO) '        <REQUIRE NAME="IO::Uncompress::Gunzip" />' >> $(DISTNAME).ppd
+	$(NOECHO) $(ECHO) '        <REQUIRE NAME="JSON::" VERSION="2" />' >> $(DISTNAME).ppd
+	$(NOECHO) $(ECHO) '        <REQUIRE NAME="JSON::XS" />' >> $(DISTNAME).ppd
+	$(NOECHO) $(ECHO) '        <REQUIRE NAME="List::MoreUtils" VERSION="0.28" />' >> $(DISTNAME).ppd
+	$(NOECHO) $(ECHO) '        <REQUIRE NAME="List::Util" />' >> $(DISTNAME).ppd
+	$(NOECHO) $(ECHO) '        <REQUIRE NAME="POSIX::" />' >> $(DISTNAME).ppd
+	$(NOECHO) $(ECHO) '        <REQUIRE NAME="Parse::RecDescent" />' >> $(DISTNAME).ppd
+	$(NOECHO) $(ECHO) '        <REQUIRE NAME="PerlIO::gzip" />' >> $(DISTNAME).ppd
+	$(NOECHO) $(ECHO) '        <REQUIRE NAME="Pod::Usage" />' >> $(DISTNAME).ppd
+	$(NOECHO) $(ECHO) '        <REQUIRE NAME="Scalar::Util" />' >> $(DISTNAME).ppd
+	$(NOECHO) $(ECHO) '        <REQUIRE NAME="Storable::" />' >> $(DISTNAME).ppd
+	$(NOECHO) $(ECHO) '        <REQUIRE NAME="URI::Escape" />' >> $(DISTNAME).ppd
+	$(NOECHO) $(ECHO) '        <REQUIRE NAME="base::" />' >> $(DISTNAME).ppd
+	$(NOECHO) $(ECHO) '        <REQUIRE NAME="constant::" />' >> $(DISTNAME).ppd
+	$(NOECHO) $(ECHO) '        <REQUIRE NAME="local::lib" />' >> $(DISTNAME).ppd
+	$(NOECHO) $(ECHO) '        <REQUIRE NAME="strict::" />' >> $(DISTNAME).ppd
+	$(NOECHO) $(ECHO) '        <REQUIRE NAME="vars::" />' >> $(DISTNAME).ppd
+	$(NOECHO) $(ECHO) '        <REQUIRE NAME="warnings::" />' >> $(DISTNAME).ppd
+	$(NOECHO) $(ECHO) '        <ARCHITECTURE NAME="x86_64-linux-gnu-thread-multi-5.24" />' >> $(DISTNAME).ppd
+	$(NOECHO) $(ECHO) '        <CODEBASE HREF="" />' >> $(DISTNAME).ppd
+	$(NOECHO) $(ECHO) '    </IMPLEMENTATION>' >> $(DISTNAME).ppd
+	$(NOECHO) $(ECHO) '</SOFTPKG>' >> $(DISTNAME).ppd
 
 
 # --- MakeMaker pm_to_blib section:
 
 pm_to_blib : $(FIRST_MAKEFILE) $(TO_INST_PM)
 	$(NOECHO) $(ABSPERLRUN) -MExtUtils::Install -e 'pm_to_blib({@ARGV}, '\''$(INST_LIB)/auto'\'', q[$(PM_FILTER)], '\''$(PERM_DIR)'\'')' -- \
-	  'src/perl5/ArrayRepr.pm' '$(INST_LIB)/ArrayRepr.pm' \
-	  'src/perl5/Bio/FeatureIO/bed.pm' '$(INST_LIB)/Bio/FeatureIO/bed.pm' \
-	  'src/perl5/Bio/JBrowse/Cmd.pm' '$(INST_LIB)/Bio/JBrowse/Cmd.pm' \
-	  'src/perl5/Bio/JBrowse/Cmd/BioDBToJson.pm' '$(INST_LIB)/Bio/JBrowse/Cmd/BioDBToJson.pm' \
-	  'src/perl5/Bio/JBrowse/Cmd/FlatFileToJson.pm' '$(INST_LIB)/Bio/JBrowse/Cmd/FlatFileToJson.pm' \
-	  'src/perl5/Bio/JBrowse/Cmd/FormatSequences.pm' '$(INST_LIB)/Bio/JBrowse/Cmd/FormatSequences.pm' \
-	  'src/perl5/Bio/JBrowse/Cmd/IndexNames.pm' '$(INST_LIB)/Bio/JBrowse/Cmd/IndexNames.pm' \
-	  'src/perl5/Bio/JBrowse/Cmd/NCFormatter.pm' '$(INST_LIB)/Bio/JBrowse/Cmd/NCFormatter.pm' \
-	  'src/perl5/Bio/JBrowse/Cmd/RemoveTrack.pm' '$(INST_LIB)/Bio/JBrowse/Cmd/RemoveTrack.pm' \
-	  'src/perl5/Bio/JBrowse/ConfigurationFile.pm' '$(INST_LIB)/Bio/JBrowse/ConfigurationFile.pm' \
-	  'src/perl5/Bio/JBrowse/ExternalSorter.pm' '$(INST_LIB)/Bio/JBrowse/ExternalSorter.pm' \
-	  'src/perl5/Bio/JBrowse/FeatureStream.pm' '$(INST_LIB)/Bio/JBrowse/FeatureStream.pm' \
-	  'src/perl5/Bio/JBrowse/FeatureStream/BioPerl.pm' '$(INST_LIB)/Bio/JBrowse/FeatureStream/BioPerl.pm' \
-	  'src/perl5/Bio/JBrowse/FeatureStream/GFF3_LowLevel.pm' '$(INST_LIB)/Bio/JBrowse/FeatureStream/GFF3_LowLevel.pm' \
-	  'src/perl5/Bio/JBrowse/FeatureStream/Genbank.pm' '$(INST_LIB)/Bio/JBrowse/FeatureStream/Genbank.pm' \
-	  'src/perl5/Bio/JBrowse/FeatureStream/Genbank/LocationParser.pm' '$(INST_LIB)/Bio/JBrowse/FeatureStream/Genbank/LocationParser.pm' \
-	  'src/perl5/Bio/JBrowse/FeatureStream/Genbank/Parser.pm' '$(INST_LIB)/Bio/JBrowse/FeatureStream/Genbank/Parser.pm' \
-	  'src/perl5/Bio/JBrowse/HashStore.pm' '$(INST_LIB)/Bio/JBrowse/HashStore.pm' \
-	  'src/perl5/Bio/JBrowse/JSON.pm' '$(INST_LIB)/Bio/JBrowse/JSON.pm' \
-	  'src/perl5/FeatureTrack.pm' '$(INST_LIB)/FeatureTrack.pm' \
-	  'src/perl5/GenomeDB.pm' '$(INST_LIB)/GenomeDB.pm' \
-	  'src/perl5/ImageTrack.pm' '$(INST_LIB)/ImageTrack.pm' \
-	  'src/perl5/ImageTrackRenderer.pm' '$(INST_LIB)/ImageTrackRenderer.pm' \
-	  'src/perl5/IntervalStore.pm' '$(INST_LIB)/IntervalStore.pm' \
-	  'src/perl5/JBlibs.pm' '$(INST_LIB)/JBlibs.pm' \
-	  'src/perl5/JsonFileStorage.pm' '$(INST_LIB)/JsonFileStorage.pm' \
-	  'src/perl5/LazyNCList.pm' '$(INST_LIB)/LazyNCList.pm' \
-	  'src/perl5/LazyPatricia.pm' '$(INST_LIB)/LazyPatricia.pm' \
-	  'src/perl5/NCLSorter.pm' '$(INST_LIB)/NCLSorter.pm' \
-	  'src/perl5/NCList.pm' '$(INST_LIB)/NCList.pm' \
-	  'src/perl5/NameHandler.pm' '$(INST_LIB)/NameHandler.pm' \
-	  'src/perl5/TiledImage.pm' '$(INST_LIB)/TiledImage.pm' \
-	  'src/perl5/TiledImage/DBPrimStorage.pm' '$(INST_LIB)/TiledImage/DBPrimStorage.pm' \
-	  'src/perl5/TiledImage/MemoryPrimStorage.pm' '$(INST_LIB)/TiledImage/MemoryPrimStorage.pm' 
-	$(NOECHO) $(ABSPERLRUN) -MExtUtils::Install -e 'pm_to_blib({@ARGV}, '\''$(INST_LIB)/auto'\'', q[$(PM_FILTER)], '\''$(PERM_DIR)'\'')' -- \
-	  'src/perl5/TrackImage.pm' '$(INST_LIB)/TrackImage.pm' 
+	  src/perl5/ArrayRepr.pm $(INST_LIB)/ArrayRepr.pm \
+	  src/perl5/Bio/FeatureIO/bed.pm $(INST_LIB)/Bio/FeatureIO/bed.pm \
+	  src/perl5/Bio/JBrowse/Cmd.pm $(INST_LIB)/Bio/JBrowse/Cmd.pm \
+	  src/perl5/Bio/JBrowse/Cmd/BioDBToJson.pm $(INST_LIB)/Bio/JBrowse/Cmd/BioDBToJson.pm \
+	  src/perl5/Bio/JBrowse/Cmd/FlatFileToJson.pm $(INST_LIB)/Bio/JBrowse/Cmd/FlatFileToJson.pm \
+	  src/perl5/Bio/JBrowse/Cmd/FormatSequences.pm $(INST_LIB)/Bio/JBrowse/Cmd/FormatSequences.pm \
+	  src/perl5/Bio/JBrowse/Cmd/IndexNames.pm $(INST_LIB)/Bio/JBrowse/Cmd/IndexNames.pm \
+	  src/perl5/Bio/JBrowse/Cmd/NCFormatter.pm $(INST_LIB)/Bio/JBrowse/Cmd/NCFormatter.pm \
+	  src/perl5/Bio/JBrowse/Cmd/RemoveTrack.pm $(INST_LIB)/Bio/JBrowse/Cmd/RemoveTrack.pm \
+	  src/perl5/Bio/JBrowse/ConfigurationFile.pm $(INST_LIB)/Bio/JBrowse/ConfigurationFile.pm \
+	  src/perl5/Bio/JBrowse/ExternalSorter.pm $(INST_LIB)/Bio/JBrowse/ExternalSorter.pm \
+	  src/perl5/Bio/JBrowse/FeatureStream.pm $(INST_LIB)/Bio/JBrowse/FeatureStream.pm \
+	  src/perl5/Bio/JBrowse/FeatureStream/BioPerl.pm $(INST_LIB)/Bio/JBrowse/FeatureStream/BioPerl.pm \
+	  src/perl5/Bio/JBrowse/FeatureStream/GFF3_LowLevel.pm $(INST_LIB)/Bio/JBrowse/FeatureStream/GFF3_LowLevel.pm \
+	  src/perl5/Bio/JBrowse/FeatureStream/Genbank.pm $(INST_LIB)/Bio/JBrowse/FeatureStream/Genbank.pm \
+	  src/perl5/Bio/JBrowse/FeatureStream/Genbank/LocationParser.pm $(INST_LIB)/Bio/JBrowse/FeatureStream/Genbank/LocationParser.pm \
+	  src/perl5/Bio/JBrowse/FeatureStream/Genbank/Parser.pm $(INST_LIB)/Bio/JBrowse/FeatureStream/Genbank/Parser.pm \
+	  src/perl5/Bio/JBrowse/HashStore.pm $(INST_LIB)/Bio/JBrowse/HashStore.pm \
+	  src/perl5/Bio/JBrowse/JSON.pm $(INST_LIB)/Bio/JBrowse/JSON.pm \
+	  src/perl5/FeatureTrack.pm $(INST_LIB)/FeatureTrack.pm \
+	  src/perl5/GenomeDB.pm $(INST_LIB)/GenomeDB.pm \
+	  src/perl5/ImageTrack.pm $(INST_LIB)/ImageTrack.pm \
+	  src/perl5/ImageTrackRenderer.pm $(INST_LIB)/ImageTrackRenderer.pm \
+	  src/perl5/IntervalStore.pm $(INST_LIB)/IntervalStore.pm \
+	  src/perl5/JBlibs.pm $(INST_LIB)/JBlibs.pm \
+	  src/perl5/JsonFileStorage.pm $(INST_LIB)/JsonFileStorage.pm \
+	  src/perl5/LazyNCList.pm $(INST_LIB)/LazyNCList.pm \
+	  src/perl5/LazyPatricia.pm $(INST_LIB)/LazyPatricia.pm \
+	  src/perl5/NCLSorter.pm $(INST_LIB)/NCLSorter.pm \
+	  src/perl5/NCList.pm $(INST_LIB)/NCList.pm \
+	  src/perl5/NameHandler.pm $(INST_LIB)/NameHandler.pm \
+	  src/perl5/TiledImage.pm $(INST_LIB)/TiledImage.pm \
+	  src/perl5/TiledImage/DBPrimStorage.pm $(INST_LIB)/TiledImage/DBPrimStorage.pm \
+	  src/perl5/TiledImage/MemoryPrimStorage.pm $(INST_LIB)/TiledImage/MemoryPrimStorage.pm \
+	  src/perl5/TrackImage.pm $(INST_LIB)/TrackImage.pm 
 	$(NOECHO) $(TOUCH) pm_to_blib
 
 
 # --- MakeMaker selfdocument section:
-
-# here so even if top_targets is overridden, these will still be defined
-# gmake will silently still work if any are .PHONY-ed but nmake won't
-
-static ::
-	$(NOECHO) $(NOOP)
-
-dynamic ::
-	$(NOECHO) $(NOOP)
-
-config ::
-	$(NOECHO) $(NOOP)
 
 
 # --- MakeMaker postamble section:

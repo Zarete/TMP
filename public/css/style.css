@@ -162,7 +162,7 @@ hr {
 	height: auto;
 	padding: 100px 0;
 	text-align: center;
-	color: #fff;
+	color: dimgray;
 	background: url(../img/back.png) no-repeat center bottom fixed;
 	background-color: black;
 	-webkit-background-size: cover;

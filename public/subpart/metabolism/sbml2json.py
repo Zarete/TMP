@@ -2,7 +2,7 @@
 #-*- coding: utf-8 -*-
 """
 Created on Wed Jan 31 2018
-Latest update on Fri Feb 2 2018
+Latest update on Thu Feb 8 2018
 @author: Amelie Laporte
 """
 import sys
@@ -17,12 +17,29 @@ def getIndex(txt,startSelection,stopSelection,int1,int2):
     return txt
 
 def getName(text):
-    return getIndex(text,'name="','" ',len('name="'),0)
-def getId(text):
-    return getIndex(text,' id="','" ',len(' id="'),0)
-def getSpecies(text):
-    return getIndex(text,'species="','" ',len('species="'),0)
+    try:
+        return getIndex(text,'name="','" ',len('name="'),0)
+    except ValueError:
+        try:
+            return getIndex(text,'name="','">',len('name="'),0)
+        except ValueError:
+            return getIndex(text,'name="','"/>',len('name="'),0)
 
+def getId(text):
+    try:
+        return getIndex(text,' id="','" ',len(' id="'),0)
+    except ValueError:
+        if "<!--":
+            pass
+def getSpecies(text):
+    try:
+        return getIndex(text,'species="','" ',len('species="'),0)
+    except ValueError:
+        try:
+            return getIndex(text,'species="','"/>',len('species="'),0)
+        except ValueError:
+            if "<!--":
+                pass
 def getListOf(attribut,sbml):
     liste=getIndex(sbml,"<listOf"+attribut+">","</listOf"+attribut+">",len("<listOf"+attribut+">"),0).split('\n')
     del liste[0]
@@ -35,7 +52,7 @@ def getReactionsInfo(text):
     all_reactions=getIndex(text,"<listOfReactions>","</listOfReactions",len("<listOfReactions>"),0).split('</reaction>')
     del all_reactions[-1]
     for r in all_reactions:
-        listOfReactions.append(getIndex(r,"<reaction",'">',len("<reaction"),2))
+        listOfReactions.append(getIndex(r,"<reaction",'>',len("<reaction"),1))
         for rxn in listOfReactions:
             r_id_dic= { "id": getId(rxn), "name": getName(rxn)}
             r_dic={ "data": r_id_dic, "group":"nodes","classes":"rxn" }
@@ -49,27 +66,29 @@ def getReactionsInfo(text):
         del reactant[0]
         del reactant[-1]
         for reac in reactant:
-            reac_id_dic["id"]=getIndex(reac,'species="','" ',len('species="'),0)+"_"+reaction_id
-            reac_id_dic["source"]=getIndex(reac,'species="','" ',len('species="'),0)
+            reac_id_dic["id"]=getSpecies(reac)+"_"+reaction_id
+            reac_id_dic["source"]=getSpecies(reac)
             reac_dic={"data": reac_id_dic,"group":"edges","classes":"reactant"}
             sbml_json.append(reac_dic)
+            reac_id_dic={"id": "", "source":"", "target":getId(rxn)}
     #Add reaction -> product edge
         product=getIndex(r,"<listOfProducts>","</listOfProducts>",len("<listOfProducts>"),0).split("\n")
         del product[0]
         del product[-1]
         for prod in product:
-            prod_id_dic["id"]=getIndex(prod,'species="','" ',len('species="'),0)+"_"+reaction_id
-            prod_id_dic["target"]=getIndex(prod,'species="','" ',len('species="'),0)
+            prod_id_dic["id"]=getSpecies(prod)+"_"+reaction_id
+            prod_id_dic["target"]=getSpecies(prod)
             prod_dic={"data": prod_id_dic,"group":"edges","classes":"product"}
             sbml_json.append(prod_dic)
+            prod_id_dic = { "id": "", "source":getId(rxn), "target":"" }
     #Add modifier -> reaction edge
         try:
             modifier=getIndex(r,"<listOfModifiers>","</listOfModifiers>",len("<listOfModifiers>"),0).split("\n")
             del modifier[0]
             del modifier[-1]
             for mod in modifier:
-                mod_id_dic["id"]=getIndex(mod,'species="','" ',len('species="'),0)+"_"+reaction_id
-                mod_id_dic["source"]=getIndex(mod,'species="','" ',len('species="'),0)
+                mod_id_dic["id"]=getSpecies(mod)+"_"+reaction_id
+                mod_id_dic["source"]=getSpecies(mod)
                 mod_dic={"data": mod_id_dic,"group":"edges","classes":"activation"}
                 sbml_json.append(mod_dic)
         except ValueError:
@@ -101,7 +120,10 @@ def add_species(sbml):
     name_duplicated = check_name_duplicated(sbml)
     for s in getListOf("Species",sbml):
         if name_duplicated:
-            s_id_dic = { "id": getId(s), "name": getId(s) }
+            try:
+                s_id_dic = { "id": getId(s), "name": getName(s) }
+            except ValueError:
+                s_id_dic = { "id": getId(s), "name": getId(s) }                
         else:
             try:
                 s_id_dic = { "id": getId(s), "name": getName(s) }

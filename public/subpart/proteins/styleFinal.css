@@ -14,14 +14,14 @@
     width:100%;
 }
 
-#spin{
-    width:100%;
-}
-
 canvas{
     border: 1px solid white;
 }
 
 #hiddenInput{
+  visibility: hidden;
+}
+
+#hiddenDownload{
   visibility: hidden;
 }
